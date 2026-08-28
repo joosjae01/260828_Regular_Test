@@ -1,4 +1,4 @@
 ﻿public interface ISaleable
 {
-    public int ApplySale();
+    public float GetSaleRate();
 }

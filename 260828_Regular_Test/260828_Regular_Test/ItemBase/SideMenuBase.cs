@@ -1,6 +1,6 @@
 ﻿public class SideMenuBase : ItemBase, ISaleable
 {
-    private int _comboCount = 0;
+    private static int _comboCount = 0;
     private const float SALE_RATE = 0.7f;
     public SideMenuBase(string name, int price) : base(name, price, ItemType.SideMenus) {
 
@@ -11,9 +11,14 @@
         _comboCount = 0;
     }
 
-    public void IncreaseComboCount()
+    public static void IncreaseComboCount()
     {
-        _comboCount++;
+        SideMenuBase._comboCount++;
+    }
+
+    public int GetComboCount()
+    {
+        return _comboCount;
     }
 
     public override int GetPrice()
@@ -27,8 +32,8 @@
         Console.WriteLine("[세트 메뉴 주문시 30% 할인]");
     }
 
-    public int ApplySale()
+    public float GetSaleRate()
     {
-        return (int)(BasePrice * SALE_RATE);
+        return SALE_RATE;
     }
 }

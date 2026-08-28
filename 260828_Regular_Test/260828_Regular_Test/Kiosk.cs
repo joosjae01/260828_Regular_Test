@@ -1,4 +1,6 @@
-﻿public class Kiosk
+﻿using System.Runtime.ExceptionServices;
+
+public class Kiosk
 {
     private List<ItemBase> _itemList = new List<ItemBase>();
     private int _tempTotal = 0;
@@ -22,6 +24,13 @@
 
     public void PutToBasket(User<ItemBase> user, int index, int count)
     {
+        if (_itemList[index] is BurgerBase)
+        {
+            for(int i  = 0; i < count; i++)
+            {
+                SideMenuBase.IncreaseComboCount();
+            }
+        }
         for (int i = 0; i < count; i++)
         {
             user.AddItem(_itemList[index]);
@@ -80,10 +89,27 @@
     public int CalculatePrice(ItemBase item)
     {
         int price = 0;
-
-        for (int i = 0; i < item.GetCount(); i++)
+        if(item is SideMenuBase)
         {
-            price += item.GetPrice();
+            float saleRate = (item as SideMenuBase).GetSaleRate();
+            int size = (item as SideMenuBase).GetComboCount();
+
+            for(int i = 0; i < size; i++)
+            {
+                price += (int)(item.GetPrice() * saleRate);
+            }
+
+            for(int i = size; i < item.GetCount(); i++)
+            {
+                price += item.GetPrice();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < item.GetCount(); i++)
+            {
+                price += item.GetPrice();
+            }
         }
 
         return price;
