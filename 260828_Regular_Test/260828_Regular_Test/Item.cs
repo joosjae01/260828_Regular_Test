@@ -1,14 +1,20 @@
 ﻿public abstract class Item
 {
     public string Name { get; }
-    public int BasePrice {  get; set; }
+    public int BasePrice {  get; }
 
-    public ItemType Type { get; set; }
+    public ItemType Type { get;}
 
-    public Item(int price)
+    public Item(string name, int price, ItemType type)
     {
+        Name = name;
         BasePrice = price;
+        Type = type;
+
     }
 
-    public abstract void CalculatePrice();
+    public virtual int GetPrice()
+    {
+        return BasePrice;
+    }
 }
