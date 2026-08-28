@@ -23,13 +23,14 @@ class Program
         Kiosk kiosk = new Kiosk(items);
         User user = new User();
 
+        const string STORE_NAME = "로켓  치킨  &  버거";
         bool isWorking = true;
 
         while (isWorking)
         {
             Console.Clear();
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("로켓  치킨  &  버거");
+            Console.WriteLine(STORE_NAME);
             Console.WriteLine("----------------------------------------");
             kiosk.PrintMenu();
             Console.WriteLine("----------------------------------------");
