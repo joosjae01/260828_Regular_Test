@@ -19,6 +19,6 @@
     public override void PrintItem()
     {
         base.PrintItem();
-        Console.WriteLine("[3개 이상 10% 할인]");
+        Console.WriteLine("[3개 이상 20% 할인]");
     }
 }
