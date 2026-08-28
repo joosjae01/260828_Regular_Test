@@ -74,7 +74,7 @@
 
     public void PurchaseBasket(User user)
     {
-        if(user.TotalMoney >= _tempTotal)
+        if(user.TotalMoney >= _tempTotal && _tempTotal != 0)
         {
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
             _totalPurchase++;
