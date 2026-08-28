@@ -14,18 +14,22 @@ class Program
         FriedChicken friedChicken = new FriedChicken();
         SpiceChicken spiceChicken = new SpiceChicken();
 
-        Kiosk kiosk = new Kiosk();
+        List<Item> items = new List<Item>
+        {
+            // 1. 치킨류
+            new FriedChicken(),
+            new SpiceChicken(),
+            
+            // 2. 버거류
+            new BeefBurger(),
+            new ChickenBurger(),
+            
+            // 3. 간식류
+            new FrenchFries()
+        };
+
+        Kiosk kiosk = new Kiosk(items);
         User user = new User(USER_BASE_MONEY);
-        // === 치킨류 ===
-        kiosk.AddItem(friedChicken);
-        kiosk.AddItem(spiceChicken);
-
-        // === 버거류 ===
-        kiosk.AddItem(beefBurger);
-        kiosk.AddItem(chickenBurger);
-
-        // === 사이드 ===
-        kiosk.AddItem(frenchFries);
 
         bool isWorking = true;
 

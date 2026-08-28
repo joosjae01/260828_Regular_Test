@@ -4,10 +4,10 @@
     private int _tempTotal = 0;
     private int _totalPurchase = 0;
     private int _totalMoney = 0;
-    
-    public void AddItem(Item item)
+
+    public Kiosk(List<Item> items)
     {
-        _itemList.Add(item);
+        _itemList = items;
     }
 
     public int GetMenuSize()
