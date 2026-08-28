@@ -4,6 +4,7 @@
     public int BasePrice {  get; }
 
     public ItemType Type { get;}
+    public int ItemCount = 0;
 
     public Item(string name, int price, ItemType type)
     {
