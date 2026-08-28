@@ -28,9 +28,9 @@
         return _basket.Count;
     }
 
-    public bool CheckItem(int index)
+    public bool CheckItem(int index, ItemType type)
     {
-        if(_basket[index].Type == ItemType.SideMenus)
+        if(_basket[index].Type == type)
         {
             return true;
         }
