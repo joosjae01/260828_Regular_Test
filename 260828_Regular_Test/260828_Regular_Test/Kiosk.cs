@@ -97,8 +97,8 @@
     {
         Console.Clear();
         Console.WriteLine("[영업 종료]");
-        Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}");
-        Console.WriteLine($"  총 결제 금액 : {_totalMoney} 원");
+        Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
+        Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
     }
 
 }
