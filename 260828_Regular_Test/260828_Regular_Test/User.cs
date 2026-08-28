@@ -3,9 +3,9 @@
     public int TotalMoney { get; private set; }
     private List<Item> _basket = new List<Item>();
 
-    public User(int totalMoney)
+    public User()
     {
-        TotalMoney = totalMoney;
+        TotalMoney = 0;
     }
 
     public void SetTotalMoney(int amount)

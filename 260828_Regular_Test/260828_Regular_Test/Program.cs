@@ -6,8 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int USER_BASE_MONEY = 100000;
-
         List<Item> items = new List<Item>
         {
             // 1. 치킨류 (ItemType.Chicken)
@@ -23,7 +21,7 @@ class Program
         };
 
         Kiosk kiosk = new Kiosk(items);
-        User user = new User(USER_BASE_MONEY);
+        User user = new User();
 
         bool isWorking = true;
 
@@ -36,8 +34,6 @@ class Program
             kiosk.PrintMenu();
             Console.WriteLine("----------------------------------------");
             kiosk.PrintBasket(user);
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"사용자 잔액  :  {user.TotalMoney}원");
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
 
