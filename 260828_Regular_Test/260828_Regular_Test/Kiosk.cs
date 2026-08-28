@@ -32,15 +32,8 @@
         Console.WriteLine("[메뉴판]");
         for (int i = 0; i < _itemList.Count; i++)
         {
-            Console.Write($"  {i + 1}. {_itemList[i].Name} ({_itemList[i].Type}) {_itemList[i].BasePrice}원\t");
-            if (_itemList[i] is ISaleable)
-            {
-                Console.WriteLine("[3개 이상 주문시 20% 할인]");
-            }
-            else
-            {
-                Console.WriteLine("[정가]");
-            }
+            Console.Write($"  {i + 1}.");
+            _itemList[i].PrintItem();
         }
     }
 

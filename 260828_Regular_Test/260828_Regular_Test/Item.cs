@@ -15,4 +15,18 @@
     }
 
     public abstract int GetPrice();
+
+    public virtual void PrintItem()
+    {
+        Console.Write($" {Name} ({Type}) {BasePrice}원\t");
+
+        if(this is ISaleable)
+        {
+            Console.WriteLine("[3개 이상 10% 할인]");
+        }
+        else
+        {
+            Console.WriteLine("[정가]");
+        }
+    }
 }
