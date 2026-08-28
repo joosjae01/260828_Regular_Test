@@ -85,7 +85,7 @@
     {
         Console.Clear();
         Console.WriteLine("----------------------------------------");
-        Console.WriteLine("[ 결제 ]");
+        PrintBasket(user);
         Console.WriteLine("----------------------------------------");
 
         user.SetTotalMoney(ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0));
@@ -95,7 +95,7 @@
             _totalPurchase++;
             _totalMoney += _tempTotal;
             RefreshItem(user);
-
+            Console.WriteLine();
             Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
             Console.WriteLine($"거스름돈 :  {user.TotalMoney}원");
         }
