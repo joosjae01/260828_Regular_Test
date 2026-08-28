@@ -21,7 +21,7 @@ class Program
         };
 
         Kiosk kiosk = new Kiosk(items);
-        User user = new User();
+        User<Item> user = new User<Item>();
 
         const string STORE_NAME = "로켓  치킨  &  버거";
         bool isWorking = true;
@@ -34,7 +34,7 @@ class Program
         }
     }
 
-    public static void PrintMainMenu(string storeName, Kiosk kiosk, User user)
+    public static void PrintMainMenu(string storeName, Kiosk kiosk, User<Item> user)
     {
         Console.Clear();
         Console.WriteLine("----------------------------------------");
@@ -44,7 +44,7 @@ class Program
         Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
     }
 
-    public static bool MainSequence(Kiosk kiosk, User user)
+    public static bool MainSequence(Kiosk kiosk, User<Item> user)
     {
         int option = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
 

@@ -15,7 +15,7 @@
         return _itemList.Count;
     }
 
-    public void PutToBasket(User user, int index, int count)
+    public void PutToBasket(User<Item> user, int index, int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -26,7 +26,7 @@
         Console.WriteLine($"{_itemList[index].Name} {count} 개를 장바구니에 정상적으로 담았습니다.");
     }
 
-    public void RefreshItem(User user)
+    public void RefreshItem(User<Item> user)
     {
         user.RefreshItem();
         for (int i = 0; i < _itemList.Count; i++)
@@ -56,7 +56,7 @@
 
     }
 
-    public void PrintBasket(User user)
+    public void PrintBasket(User<Item> user)
     {
         if (user.GetBasketSize() > 0)
         {
@@ -88,7 +88,7 @@
         return price;
     }
 
-    public void PurchaseBasket(User user)
+    public void PurchaseBasket(User<Item> user)
     {
         Console.Clear();
 
