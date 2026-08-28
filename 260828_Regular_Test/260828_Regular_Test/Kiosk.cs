@@ -84,12 +84,19 @@
     public void PurchaseBasket(User user)
     {
         Console.Clear();
+        
+        if (_tempTotal == 0)
+        {
+            Console.WriteLine("제품을 선택해주세요 !");
+            return;
+        }
+
         Console.WriteLine("----------------------------------------");
         PrintBasket(user);
         Console.WriteLine("----------------------------------------");
 
         user.SetTotalMoney(ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0));
-        if (user.TotalMoney >= _tempTotal && _tempTotal != 0)
+        if (user.TotalMoney >= _tempTotal)
         {
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
             _totalPurchase++;
@@ -98,10 +105,6 @@
             Console.WriteLine();
             Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
             Console.WriteLine($"거스름돈 :  {user.TotalMoney}원");
-        }
-        else if(_tempTotal == 0)
-        {
-            Console.WriteLine("제품을 선택해주세요 !");
         }
         else
         {
