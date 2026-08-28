@@ -1,6 +1,6 @@
 ﻿public enum ItemType
 {
-    FriedChicken,
+    Chicken,
     Hamburger,
     SideMenus
 }
