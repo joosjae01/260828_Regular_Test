@@ -1,7 +1,7 @@
 ﻿public class BeefBurger : Item, ISaleable
 {
     private const float SALE_RATE = 0.8f;
-    private bool _isSale = false;
+    private const int SALE_COUNT = 3;
 
     public BeefBurger() : base("소고기 버거", 5900, ItemType.Hamburger) {
 
@@ -9,16 +9,11 @@
 
     public override int GetPrice()
     {
-        if (_isSale)
+        if (ItemCount >= SALE_COUNT)
         {
-            _isSale = false;
             return (int)(BasePrice * SALE_RATE);
         }
 
         return BasePrice;
-    }
-    public void ApplySale()
-    {
-        _isSale = true;
     }
 }
