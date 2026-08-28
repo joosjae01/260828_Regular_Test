@@ -80,6 +80,9 @@
             _totalPurchase++;
             _totalMoney += _tempTotal;
             RefreshItem(user);
+
+            Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
+            Console.WriteLine($"잔액  :  {user.TotalMoney}");
         }
         else
         {
