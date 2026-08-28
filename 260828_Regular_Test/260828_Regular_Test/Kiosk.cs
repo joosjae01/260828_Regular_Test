@@ -87,6 +87,8 @@
         Console.WriteLine("----------------------------------------");
         Console.WriteLine("[ 결제 ]");
         Console.WriteLine("----------------------------------------");
+
+        user.SetTotalMoney(ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0));
         if (user.TotalMoney >= _tempTotal && _tempTotal != 0)
         {
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
@@ -95,7 +97,7 @@
             RefreshItem(user);
 
             Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
-            Console.WriteLine($"잔액  :  {user.TotalMoney}");
+            Console.WriteLine($"거스름돈 :  {user.TotalMoney}");
         }
         else if(_tempTotal == 0)
         {
@@ -103,7 +105,7 @@
         }
         else
         {
-            Console.WriteLine("결제가 정상적으로 이루어지지 않았습니다. 잔액을 확인해주세요.");
+            Console.WriteLine("금액이 부족합니다 !");
         }
     }
 }
