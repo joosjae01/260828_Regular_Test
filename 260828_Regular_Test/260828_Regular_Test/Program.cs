@@ -75,7 +75,6 @@ class Program
             case 4:
                 kiosk.PrintTotal();
                 return false;
-                break;
         }
 
         return true;
