@@ -46,6 +46,10 @@ class Program
             switch (picked)
             {
                 case 1:
+                    Console.Clear();
+                    Console.WriteLine("----------------------------------------");
+                    kiosk.PrintMenu();
+                    Console.WriteLine("----------------------------------------");
                     int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
                     int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
 

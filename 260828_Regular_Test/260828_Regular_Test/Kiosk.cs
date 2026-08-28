@@ -46,7 +46,9 @@
     public void PrintTotal()
     {
         Console.Clear();
+        Console.WriteLine("----------------------------------------");
         Console.WriteLine("[영업 종료]");
+        Console.WriteLine("----------------------------------------");
         Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
         Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
     }
@@ -82,7 +84,10 @@
     public void PurchaseBasket(User user)
     {
         Console.Clear();
-        if(user.TotalMoney >= _tempTotal && _tempTotal != 0)
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("[ 결제 ]");
+        Console.WriteLine("----------------------------------------");
+        if (user.TotalMoney >= _tempTotal && _tempTotal != 0)
         {
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
             _totalPurchase++;
