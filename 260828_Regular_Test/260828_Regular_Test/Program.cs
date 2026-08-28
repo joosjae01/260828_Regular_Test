@@ -6,22 +6,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Item> items = new List<Item>
+        List<ItemBase> items = new List<ItemBase>
         {
             // 1. 치킨류 (ItemType.Chicken)
-            new FriedChicken(),
-            new SpiceChicken(),
+            new ChickenBase("후라이드 치킨", 13000),
+            new ChickenBase("양념 치킨", 14000),
             
             // 2. 버거류 (ItemType.Hamburger)
-            new BeefBurger(),
-            new ChickenBurger(),
+            new BurgerBase("소고기 버거", 5900),
+            new BurgerBase("치킨 샌드위치", 4900),
             
             // 3. 간식류 (ItemType.SideMenus)
-            new FrenchFries()
+            new SideMenuBase("감자 튀김", 2300)
         };
 
         Kiosk kiosk = new Kiosk(items);
-        User<Item> user = new User<Item>();
+        User<ItemBase> user = new User<ItemBase>();
 
         const string STORE_NAME = "로켓  치킨  &  버거";
         bool isWorking = true;
@@ -34,7 +34,7 @@ class Program
         }
     }
 
-    public static void PrintMainMenu(string storeName, Kiosk kiosk, User<Item> user)
+    public static void PrintMainMenu(string storeName, Kiosk kiosk, User<ItemBase> user)
     {
         Console.Clear();
         Console.WriteLine("----------------------------------------");
@@ -44,7 +44,7 @@ class Program
         Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
     }
 
-    public static bool MainSequence(Kiosk kiosk, User<Item> user)
+    public static bool MainSequence(Kiosk kiosk, User<ItemBase> user)
     {
         int option = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
 

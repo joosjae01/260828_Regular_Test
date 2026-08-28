@@ -1,13 +1,18 @@
 ﻿public class Kiosk
 {
-    private List<Item> _itemList = new List<Item>();
+    private List<ItemBase> _itemList = new List<ItemBase>();
     private int _tempTotal = 0;
     private int _totalPurchase = 0;
     private int _totalMoney = 0;
 
-    public Kiosk(List<Item> items)
+    public Kiosk(List<ItemBase> items)
     {
         _itemList = items;
+    }
+
+    public void AddMenu(ItemBase item)
+    {
+        _itemList.Add(item);
     }
 
     public int GetMenuSize()
@@ -15,7 +20,7 @@
         return _itemList.Count;
     }
 
-    public void PutToBasket(User<Item> user, int index, int count)
+    public void PutToBasket(User<ItemBase> user, int index, int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -26,7 +31,7 @@
         Console.WriteLine($"{_itemList[index].Name} {count} 개를 장바구니에 정상적으로 담았습니다.");
     }
 
-    public void RefreshItem(User<Item> user)
+    public void RefreshItem(User<ItemBase> user)
     {
         user.RefreshItem();
         for (int i = 0; i < _itemList.Count; i++)
@@ -56,14 +61,14 @@
 
     }
 
-    public void PrintBasket(User<Item> user)
+    public void PrintBasket(User<ItemBase> user)
     {
         if (user.GetBasketSize() > 0)
         {
             Console.WriteLine("[장바구니]");
 
             _tempTotal = 0;
-            foreach (Item item in _itemList)
+            foreach (ItemBase item in _itemList)
             {
                 if (item.GetCount() != 0)
                 {
@@ -76,7 +81,7 @@
         }
     }
 
-    public int CalculatePrice(Item item)
+    public int CalculatePrice(ItemBase item)
     {
         int price = 0;
 
@@ -88,7 +93,7 @@
         return price;
     }
 
-    public void PurchaseBasket(User<Item> user)
+    public void PurchaseBasket(User<ItemBase> user)
     {
         Console.Clear();
 

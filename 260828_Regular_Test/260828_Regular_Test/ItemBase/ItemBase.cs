@@ -1,4 +1,4 @@
-﻿public abstract class Item
+﻿public abstract class ItemBase
 {
     public string Name { get; }
     public int BasePrice {  get; }
@@ -6,7 +6,7 @@
     public ItemType Type { get;}
     protected int _ItemCount = 0;
 
-    public Item(string name, int price, ItemType type)
+    public ItemBase(string name, int price, ItemType type)
     {
         Name = name;
         BasePrice = price;

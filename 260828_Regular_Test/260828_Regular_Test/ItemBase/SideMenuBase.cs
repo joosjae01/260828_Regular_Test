@@ -1,6 +1,6 @@
-﻿public class FrenchFries : Item
+﻿public class SideMenuBase : ItemBase
 {
-    public FrenchFries() : base("감자 튀김", 1500, ItemType.SideMenus) {
+    public SideMenuBase(string name, int price) : base(name, price, ItemType.SideMenus) {
 
     }
 

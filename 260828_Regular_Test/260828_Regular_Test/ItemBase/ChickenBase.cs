@@ -1,6 +1,6 @@
-﻿public class SpiceChicken : Item
+﻿public class ChickenBase : ItemBase
 {
-    public SpiceChicken() : base("양념 치킨", 14000, ItemType.Chicken) {
+    public ChickenBase(string name, int price) : base(name, price, ItemType.Chicken) {
 
     }
 
