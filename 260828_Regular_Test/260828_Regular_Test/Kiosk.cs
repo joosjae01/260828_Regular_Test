@@ -87,7 +87,7 @@
         
         if (_tempTotal == 0)
         {
-            Console.WriteLine("제품을 선택해주세요 !");
+            Console.WriteLine("제품을 선택하지 않았습니다 !");
             return;
         }
 
