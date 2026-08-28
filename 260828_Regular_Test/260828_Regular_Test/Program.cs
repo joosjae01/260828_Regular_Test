@@ -49,7 +49,7 @@ class Program
                     int menuNumber = ConsoleInput.ReadIntInRange("메뉴 번호: ", 1, kiosk.GetMenuSize());
                     int count = ConsoleInput.ReadIntAtLeast("개수: ", 0);
 
-                    kiosk.PutItem(user, (menuNumber - 1), count);
+                    kiosk.PutToBasket(user, (menuNumber - 1), count);
                     break;
 
                 case 2:
