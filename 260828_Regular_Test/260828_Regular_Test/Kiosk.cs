@@ -12,8 +12,9 @@
         item.ItemCount++;
     }
 
-    public void RefreshItem()
+    public void RefreshItem(User user)
     {
+        user.RefreshItem();
         for(int i = 0; i < _itemList.Count; i++)
         {
             _itemList[i].ItemCount = 0;
