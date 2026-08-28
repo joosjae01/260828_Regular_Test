@@ -8,12 +8,6 @@ class Program
     {
         const int USER_BASE_MONEY = 100000;
 
-        BeefBurger beefBurger = new BeefBurger();
-        ChickenBurger chickenBurger = new ChickenBurger();
-        FrenchFries frenchFries = new FrenchFries();
-        FriedChicken friedChicken = new FriedChicken();
-        SpiceChicken spiceChicken = new SpiceChicken();
-
         List<Item> items = new List<Item>
         {
             // 1. 치킨류
