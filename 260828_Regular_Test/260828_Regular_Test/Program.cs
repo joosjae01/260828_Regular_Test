@@ -30,38 +30,7 @@ class Program
         while (isWorking)
         {
             PrintMainMenu(STORE_NAME, kiosk, user);
-
-            int option = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
-
-            switch (option)
-            {
-                // 1. 담기
-                case 1:
-                    Console.Clear();
-                    kiosk.PrintMenu();
-                    int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
-                    int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
-
-                    kiosk.PutToBasket(user, orderNumber, orderCount);
-                    break;
-
-                // 2. 비우기
-                case 2:
-                    kiosk.RefreshItem(user);
-                    break;
-
-                // 3. 결제
-                case 3:
-                    kiosk.PurchaseBasket(user);
-                    break;
-
-                // 4. 영업 종료
-                case 4:
-                    kiosk.PrintTotal();
-                    isWorking = false;
-                    break;
-            }
-
+            isWorking = MainSequence(kiosk, user);
             ConsoleInput.Pause();
         }
     }
@@ -74,5 +43,41 @@ class Program
         kiosk.PrintMenu();
         kiosk.PrintBasket(user);
         Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
+    }
+
+    public static bool MainSequence(Kiosk kiosk, User user)
+    {
+        int option = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
+
+        switch (option)
+        {
+            // 1. 담기
+            case 1:
+                Console.Clear();
+                kiosk.PrintMenu();
+                int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
+                int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
+
+                kiosk.PutToBasket(user, orderNumber, orderCount);
+                break;
+
+            // 2. 비우기
+            case 2:
+                kiosk.RefreshItem(user);
+                break;
+
+            // 3. 결제
+            case 3:
+                kiosk.PurchaseBasket(user);
+                break;
+
+            // 4. 영업 종료
+            case 4:
+                kiosk.PrintTotal();
+                return false;
+                break;
+        }
+
+        return true;
     }
 }
