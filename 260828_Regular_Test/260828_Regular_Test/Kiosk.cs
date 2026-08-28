@@ -17,7 +17,7 @@
 
     public void PutToBasket(User user, int index, int count)
     {
-        for(int i  = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             user.AddItem(_itemList[index]);
             _itemList[index].ItemCount++;
@@ -29,19 +29,21 @@
     public void RefreshItem(User user)
     {
         user.RefreshItem();
-        for(int i = 0; i < _itemList.Count; i++)
+        for (int i = 0; i < _itemList.Count; i++)
         {
             _itemList[i].ItemCount = 0;
         }
     }
     public void PrintMenu()
     {
+        Console.WriteLine("----------------------------------------");
         Console.WriteLine("[메뉴판]");
         for (int i = 0; i < _itemList.Count; i++)
         {
             Console.Write($"  {i + 1}.");
             _itemList[i].PrintItem();
         }
+        Console.WriteLine("----------------------------------------");
     }
     public void PrintTotal()
     {
@@ -51,29 +53,34 @@
         Console.WriteLine("----------------------------------------");
         Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
         Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
+
     }
 
     public void PrintBasket(User user)
     {
-        Console.WriteLine("[장바구니]");
-
-        _tempTotal = 0;
-        foreach(Item item in _itemList)
+        if (user.GetBasketSize() > 0)
         {
-            if(item.ItemCount != 0)
+            Console.WriteLine("[장바구니]");
+
+            _tempTotal = 0;
+            foreach (Item item in _itemList)
             {
-                Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}원");
-                _tempTotal += CalculatePrice(item);
+                if (item.ItemCount != 0)
+                {
+                    Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}원");
+                    _tempTotal += CalculatePrice(item);
+                }
             }
+            Console.WriteLine($"  합계 : {_tempTotal}원");
+            Console.WriteLine("----------------------------------------");
         }
-        Console.WriteLine($"  합계 : {_tempTotal}원");
     }
 
     public int CalculatePrice(Item item)
     {
         int price = 0;
-        
-        for(int i = 0; i < item.ItemCount; i++)
+
+        for (int i = 0; i < item.ItemCount; i++)
         {
             price += item.GetPrice();
         }
@@ -84,7 +91,7 @@
     public void PurchaseBasket(User user)
     {
         Console.Clear();
-        
+
         if (_tempTotal == 0)
         {
             Console.WriteLine("제품을 선택하지 않았습니다 !");
@@ -93,7 +100,6 @@
 
         Console.WriteLine("----------------------------------------");
         PrintBasket(user);
-        Console.WriteLine("----------------------------------------");
 
         user.SetTotalMoney(ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0));
         if (user.TotalMoney >= _tempTotal)

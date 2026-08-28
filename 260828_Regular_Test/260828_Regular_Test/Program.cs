@@ -38,9 +38,7 @@ class Program
                 // 1. 담기
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("----------------------------------------");
                     kiosk.PrintMenu();
-                    Console.WriteLine("----------------------------------------");
                     int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
                     int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
 
@@ -73,11 +71,8 @@ class Program
         Console.Clear();
         Console.WriteLine("----------------------------------------");
         Console.WriteLine(storeName);
-        Console.WriteLine("----------------------------------------");
         kiosk.PrintMenu();
-        Console.WriteLine("----------------------------------------");
         kiosk.PrintBasket(user);
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
     }
 }
