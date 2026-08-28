@@ -1,15 +1,19 @@
 ﻿public class Kiosk
 {
     private List<Item> _itemList = new List<Item>();
+    private int _tempTotal = 0;
     public void AddItem(Item item)
     {
         _itemList.Add(item);
     }
 
-    public void PutItem(User user, Item item)
+    public void PutItem(User user, int index, int count)
     {
-        user.AddItem(item);
-        item.ItemCount++;
+        for(int i  = 0; i < count; i++)
+        {
+            user.AddItem(_itemList[index]);
+            _itemList[index].ItemCount++;
+        }
     }
 
     public void RefreshItem(User user)
@@ -41,17 +45,16 @@
     {
         Console.WriteLine("[장바구니]");
 
-        int total = 0;
-
+        _tempTotal = 0;
         foreach(Item item in _itemList)
         {
             if(item.ItemCount != 0)
             {
                 Console.WriteLine($"{item.Name} x{item.ItemCount} {CalculatePrice(item)}");
-                total += CalculatePrice(item);
+                _tempTotal += CalculatePrice(item);
             }
         }
-        Console.WriteLine($"  합계 : {total}원");
+        Console.WriteLine($"  합계 : {_tempTotal}원");
     }
 
     public int CalculatePrice(Item item)
@@ -68,7 +71,14 @@
 
     public void PurchaseBasket(User user)
     {
+        if(user.TotalMoney >= _tempTotal)
+        {
+            user.SetTotalMoney(user.TotalMoney - _tempTotal);
+        }
+        else
+        {
 
+        }
     }
 
 }
