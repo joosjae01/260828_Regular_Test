@@ -4,7 +4,7 @@
     public int BasePrice {  get; }
 
     public ItemType Type { get;}
-    public int ItemCount = 0;
+    protected int _ItemCount = 0;
 
     public Item(string name, int price, ItemType type)
     {
@@ -12,6 +12,21 @@
         BasePrice = price;
         Type = type;
 
+    }
+
+    public void InitCount()
+    {
+        _ItemCount = 0;
+    }
+
+    public void IncreaseCount()
+    {
+        _ItemCount += 1;
+    }
+
+    public int GetCount()
+    {
+        return _ItemCount;
     }
 
     public abstract int GetPrice();

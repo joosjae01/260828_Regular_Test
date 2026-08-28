@@ -20,7 +20,7 @@
         for (int i = 0; i < count; i++)
         {
             user.AddItem(_itemList[index]);
-            _itemList[index].ItemCount++;
+            _itemList[index].IncreaseCount();
         }
 
         Console.WriteLine($"{_itemList[index].Name} {count} 개를 장바구니에 정상적으로 담았습니다.");
@@ -31,7 +31,7 @@
         user.RefreshItem();
         for (int i = 0; i < _itemList.Count; i++)
         {
-            _itemList[i].ItemCount = 0;
+            _itemList[i].InitCount();
         }
     }
     public void PrintMenu()
@@ -65,9 +65,9 @@
             _tempTotal = 0;
             foreach (Item item in _itemList)
             {
-                if (item.ItemCount != 0)
+                if (item.GetCount() != 0)
                 {
-                    Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}원");
+                    Console.WriteLine($"  {item.Name} x{item.GetCount()} {CalculatePrice(item)}원");
                     _tempTotal += CalculatePrice(item);
                 }
             }
@@ -80,7 +80,7 @@
     {
         int price = 0;
 
-        for (int i = 0; i < item.ItemCount; i++)
+        for (int i = 0; i < item.GetCount(); i++)
         {
             price += item.GetPrice();
         }

@@ -9,7 +9,7 @@
 
     public override int GetPrice()
     {
-        if (ItemCount >= SALE_COUNT)
+        if (_ItemCount >= SALE_COUNT)
         {
             return (int)(BasePrice * SALE_RATE);
         }
