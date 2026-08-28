@@ -40,16 +40,16 @@ class Program
             Console.WriteLine($"사용자 잔액  :  {user.TotalMoney}원");
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("1. 담기  2. 전체 비우기  3. 결제  4. 영업 종료");
+
             int picked = ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
 
-            // 골라진 번호대로 처리하고 결과를 출력한다
             switch (picked)
             {
                 case 1:
-                    int menuNumber = ConsoleInput.ReadIntInRange("메뉴 번호: ", 1, kiosk.GetMenuSize());
-                    int count = ConsoleInput.ReadIntAtLeast("개수: ", 0);
+                    int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
+                    int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
 
-                    kiosk.PutToBasket(user, (menuNumber - 1), count);
+                    kiosk.PutToBasket(user, orderNumber, orderCount);
                     break;
 
                 case 2:
