@@ -13,8 +13,5 @@
 
     }
 
-    public virtual int GetPrice()
-    {
-        return BasePrice;
-    }
+    public abstract int GetPrice();
 }
