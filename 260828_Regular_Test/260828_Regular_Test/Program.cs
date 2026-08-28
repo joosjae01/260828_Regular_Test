@@ -6,8 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int MENU_START = 1;
-        const int MENU_END = 5;
         const int USER_BASE_MONEY = 100000;
 
         BeefBurger beefBurger = new BeefBurger();
@@ -50,8 +48,8 @@ class Program
             switch (picked)
             {
                 case 1:
-                    int menuNumber = ConsoleInput.ReadIntInRange("메뉴 번호 : ", MENU_START, MENU_END);
-                    int count = ConsoleInput.ReadIntAtLeast("개수 : ", 0);
+                    int menuNumber = ConsoleInput.ReadIntInRange("메뉴 번호: ", 1, kiosk.GetMenuSize());
+                    int count = ConsoleInput.ReadIntAtLeast("개수: ", 0);
 
                     kiosk.PutItem(user, (menuNumber - 1), count);
                     break;
