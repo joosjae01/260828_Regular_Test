@@ -18,11 +18,6 @@
         _basket.Add(item);
     }
 
-    public T GetItem(int index)
-    {
-        return _basket[index];
-    }
-
     public int GetBasketSize()
     {
         return _basket.Count;
