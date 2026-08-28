@@ -10,15 +10,15 @@ class Program
 
         List<Item> items = new List<Item>
         {
-            // 1. 치킨류
+            // 1. 치킨류 (ItemType.Chicken)
             new FriedChicken(),
             new SpiceChicken(),
             
-            // 2. 버거류
+            // 2. 버거류 (ItemType.Hamburger)
             new BeefBurger(),
             new ChickenBurger(),
             
-            // 3. 간식류
+            // 3. 간식류 (ItemType.SideMenus)
             new FrenchFries()
         };
 
@@ -39,12 +39,13 @@ class Program
             Console.WriteLine("----------------------------------------");
             Console.WriteLine($"사용자 잔액  :  {user.TotalMoney}원");
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("1. 담기  2. 전체 비우기  3. 결제  4. 영업 종료");
+            Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
 
             int picked = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
 
             switch (picked)
             {
+                // 1. 담기
                 case 1:
                     Console.Clear();
                     Console.WriteLine("----------------------------------------");
@@ -56,14 +57,17 @@ class Program
                     kiosk.PutToBasket(user, orderNumber, orderCount);
                     break;
 
+                // 2. 비우기
                 case 2:
                     kiosk.RefreshItem(user);
                     break;
 
+                // 3. 결제
                 case 3:
                     kiosk.PurchaseBasket(user);
                     break;
 
+                // 4. 영업 종료
                 case 4:
                     kiosk.PrintTotal();
                     isWorking = false;
