@@ -16,7 +16,7 @@
 
     public abstract int GetPrice();
 
-    public void PrintItem()
+    public virtual void PrintItem()
     {
 
         string korTypeName = "";
@@ -40,14 +40,5 @@
         }
 
         Console.Write($"\t{Name}\t({korTypeName})\t\t{BasePrice}원\t");
-
-        if(this is ISaleable)
-        {
-            Console.WriteLine("[3개 이상 10% 할인]");
-        }
-        else
-        {
-            Console.WriteLine("[정가]");
-        }
     }
 }

@@ -8,4 +8,10 @@
     {
         return BasePrice;
     }
+
+    public override void PrintItem()
+    {
+        base.PrintItem();
+        Console.WriteLine("[정가]");
+    }
 }
