@@ -47,6 +47,7 @@
             Console.Write($"  {i + 1}.");
             _itemList[i].PrintItem();
         }
+        Console.WriteLine();
     }
     public void PrintTotal()
     {
@@ -72,7 +73,7 @@
                     _tempTotal += CalculatePrice(item);
                 }
             }
-            Console.WriteLine($"  합계 : {_tempTotal}원");
+            Console.WriteLine($"  합계 : {_tempTotal}원\n");
         }
     }
 

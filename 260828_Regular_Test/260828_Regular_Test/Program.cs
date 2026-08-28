@@ -38,9 +38,10 @@ class Program
     {
         Console.Clear();
         Console.WriteLine(storeName);
+        Console.WriteLine();
         kiosk.PrintMenu();
         kiosk.PrintBasket(user);
-        Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
+        Console.WriteLine("  1. 담기\t3. 결제\n  2. 비우기\t4. 영업 종료\n");
     }
 
     public static bool MainSequence(Kiosk kiosk, User<ItemBase> user)
