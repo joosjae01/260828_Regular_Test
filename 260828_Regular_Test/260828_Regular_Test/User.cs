@@ -1,7 +1,7 @@
-﻿public class User
+﻿public class User<T>
 {
     public int TotalMoney { get; private set; }
-    private List<Item> _basket = new List<Item>();
+    private List<T> _basket = new List<T>();
 
     public User()
     {
@@ -13,12 +13,12 @@
         TotalMoney = amount;
     }
 
-    public void AddItem(Item item)
+    public void AddItem(T item)
     {
         _basket.Add(item);
     }
 
-    public Item GetItem(int index)
+    public T GetItem(int index)
     {
         return _basket[index];
     }
@@ -26,17 +26,6 @@
     public int GetBasketSize()
     {
         return _basket.Count;
-    }
-
-    public bool CheckItem(int index, ItemType type)
-    {
-        if(_basket[index].Type == type)
-        {
-            return true;
-        }
-
-        return false;
-        
     }
 
     public void RefreshItem()
