@@ -11,13 +11,14 @@
     {
         if (_isSale)
         {
-            return ApplySale();
+            _isSale = false;
+            return (int)(BasePrice * SALE_RATE);
         }
 
         return BasePrice;
     }
-    public int ApplySale()
+    public void ApplySale()
     {
-        return (int)(BasePrice * SALE_RATE);
+        _isSale = true;
     }
 }
