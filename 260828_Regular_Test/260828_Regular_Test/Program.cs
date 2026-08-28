@@ -41,7 +41,7 @@ class Program
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("1. 담기  2. 전체 비우기  3. 결제  4. 영업 종료");
 
-            int picked = ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
+            int picked = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
 
             switch (picked)
             {
