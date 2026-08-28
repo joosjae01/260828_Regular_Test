@@ -2,6 +2,9 @@
 {
     private List<Item> _itemList = new List<Item>();
     private int _tempTotal = 0;
+    private int _totalPurchase = 0;
+    private int _totalMoney = 0;
+    
     public void AddItem(Item item)
     {
         _itemList.Add(item);
@@ -50,7 +53,7 @@
         {
             if(item.ItemCount != 0)
             {
-                Console.WriteLine($"{item.Name} x{item.ItemCount} {CalculatePrice(item)}");
+                Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}");
                 _tempTotal += CalculatePrice(item);
             }
         }
@@ -74,11 +77,19 @@
         if(user.TotalMoney >= _tempTotal)
         {
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
+            _totalPurchase++;
+            _totalMoney += _tempTotal;
         }
         else
         {
 
         }
+    }
+
+    public void PrintTotal()
+    {
+        Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}");
+        Console.WriteLine($"  총 결제 금액 : {_totalMoney} 원");
     }
 
 }
