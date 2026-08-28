@@ -10,6 +10,11 @@
         _itemList.Add(item);
     }
 
+    public int GetMenuSize()
+    {
+        return _itemList.Count;
+    }
+
     public void PutItem(User user, int index, int count)
     {
         for(int i  = 0; i < count; i++)
