@@ -1,6 +1,7 @@
 ﻿//https://github.com/joosjae01/260828_Regular_Test
 
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
@@ -28,19 +29,11 @@ class Program
 
         while (isWorking)
         {
-            Console.Clear();
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine(STORE_NAME);
-            Console.WriteLine("----------------------------------------");
-            kiosk.PrintMenu();
-            Console.WriteLine("----------------------------------------");
-            kiosk.PrintBasket(user);
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
+            PrintMainMenu(STORE_NAME, kiosk, user);
 
-            int picked = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
+            int option = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
 
-            switch (picked)
+            switch (option)
             {
                 // 1. 담기
                 case 1:
@@ -73,5 +66,18 @@ class Program
 
             ConsoleInput.Pause();
         }
+    }
+
+    public static void PrintMainMenu(string storeName, Kiosk kiosk, User user)
+    {
+        Console.Clear();
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine(storeName);
+        Console.WriteLine("----------------------------------------");
+        kiosk.PrintMenu();
+        Console.WriteLine("----------------------------------------");
+        kiosk.PrintBasket(user);
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("1. 담기  2. 비우기  3. 결제  4. 영업 종료");
     }
 }
