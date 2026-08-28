@@ -22,6 +22,8 @@
             user.AddItem(_itemList[index]);
             _itemList[index].ItemCount++;
         }
+
+        Console.WriteLine($"{_itemList[index].Name} {count} 개를 장바구니에 정상적으로 담았습니다.");
     }
 
     public void RefreshItem(User user)
