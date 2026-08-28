@@ -18,7 +18,28 @@
 
     public void PrintItem()
     {
-        Console.Write($" {Name} ({Type}) {BasePrice}원\t");
+
+        string korTypeName = "";
+
+        switch (Type)
+        {
+            case ItemType.Chicken:
+                korTypeName += "치킨";
+                break;
+
+            case ItemType.Hamburger:
+                korTypeName += "버거";
+                break;
+
+            case ItemType.SideMenus:
+                korTypeName += "간식";
+                break;
+
+            default:
+                break;
+        }
+
+        Console.Write($"\t{Name}\t({korTypeName})\t\t{BasePrice}원\t");
 
         if(this is ISaleable)
         {
