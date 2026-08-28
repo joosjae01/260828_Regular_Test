@@ -1,7 +1,6 @@
 ﻿//https://github.com/joosjae01/260828_Regular_Test
 
 using System;
-using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
