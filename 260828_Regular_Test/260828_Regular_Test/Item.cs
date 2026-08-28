@@ -1,5 +1,6 @@
 ﻿public abstract class Item
 {
+    public string Name { get; }
     public int BasePrice {  get; set; }
 
     public Item(int price)
