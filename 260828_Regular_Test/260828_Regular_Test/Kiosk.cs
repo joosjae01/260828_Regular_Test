@@ -79,6 +79,7 @@
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
             _totalPurchase++;
             _totalMoney += _tempTotal;
+            RefreshItem(user);
         }
         else
         {
