@@ -23,6 +23,22 @@
         return _basket[index];
     }
 
+    public int GetBasketSize()
+    {
+        return _basket.Count;
+    }
+
+    public bool CheckItem(int index)
+    {
+        if(_basket[index].Type == ItemType.SideMenus)
+        {
+            return true;
+        }
+
+        return false;
+        
+    }
+
     public void RefreshItem()
     {
         _basket.Clear();
