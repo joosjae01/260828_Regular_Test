@@ -8,24 +8,22 @@ class Program
     {
         const int USER_BASE_MONEY = 100000;
 
-        BeefBurger beefBurger = new BeefBurger();
-        ChickenBurger chickenBurger = new ChickenBurger();
-        FrenchFries frenchFries = new FrenchFries();
-        FriedChicken friedChicken = new FriedChicken();
-        SpiceChicken spiceChicken = new SpiceChicken();
+        List<Item> items = new List<Item>
+        {
+            // 1. 치킨류
+            new FriedChicken(),
+            new SpiceChicken(),
+            
+            // 2. 버거류
+            new BeefBurger(),
+            new ChickenBurger(),
+            
+            // 3. 간식류
+            new FrenchFries()
+        };
 
-        Kiosk kiosk = new Kiosk();
+        Kiosk kiosk = new Kiosk(items);
         User user = new User(USER_BASE_MONEY);
-        // === 치킨류 ===
-        kiosk.AddItem(friedChicken);
-        kiosk.AddItem(spiceChicken);
-
-        // === 버거류 ===
-        kiosk.AddItem(beefBurger);
-        kiosk.AddItem(chickenBurger);
-
-        // === 사이드 ===
-        kiosk.AddItem(frenchFries);
 
         bool isWorking = true;
 
@@ -42,16 +40,16 @@ class Program
             Console.WriteLine($"사용자 잔액  :  {user.TotalMoney}원");
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("1. 담기  2. 전체 비우기  3. 결제  4. 영업 종료");
-            int picked = ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
 
-            // 골라진 번호대로 처리하고 결과를 출력한다
+            int picked = ConsoleInput.ReadIntInRange("옵션 선택 : ", 1, 4);
+
             switch (picked)
             {
                 case 1:
-                    int menuNumber = ConsoleInput.ReadIntInRange("메뉴 번호: ", 1, kiosk.GetMenuSize());
-                    int count = ConsoleInput.ReadIntAtLeast("개수: ", 0);
+                    int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
+                    int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
 
-                    kiosk.PutItem(user, (menuNumber - 1), count);
+                    kiosk.PutToBasket(user, orderNumber, orderCount);
                     break;
 
                 case 2:

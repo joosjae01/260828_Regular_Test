@@ -4,10 +4,10 @@
     private int _tempTotal = 0;
     private int _totalPurchase = 0;
     private int _totalMoney = 0;
-    
-    public void AddItem(Item item)
+
+    public Kiosk(List<Item> items)
     {
-        _itemList.Add(item);
+        _itemList = items;
     }
 
     public int GetMenuSize()
@@ -15,7 +15,7 @@
         return _itemList.Count;
     }
 
-    public void PutItem(User user, int index, int count)
+    public void PutToBasket(User user, int index, int count)
     {
         for(int i  = 0; i < count; i++)
         {
@@ -40,6 +40,13 @@
             Console.Write($"  {i + 1}.");
             _itemList[i].PrintItem();
         }
+    }
+    public void PrintTotal()
+    {
+        Console.Clear();
+        Console.WriteLine("[영업 종료]");
+        Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
+        Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
     }
 
     public void PrintBasket(User user)
@@ -92,13 +99,4 @@
             Console.WriteLine("결제가 정상적으로 이루어지지 않았습니다. 잔액을 확인해주세요.");
         }
     }
-
-    public void PrintTotal()
-    {
-        Console.Clear();
-        Console.WriteLine("[영업 종료]");
-        Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
-        Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
-    }
-
 }
