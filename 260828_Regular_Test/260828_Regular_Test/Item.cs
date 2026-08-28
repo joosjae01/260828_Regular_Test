@@ -16,7 +16,7 @@
 
     public abstract int GetPrice();
 
-    public virtual void PrintItem()
+    public void PrintItem()
     {
         Console.Write($" {Name} ({Type}) {BasePrice}원\t");
 
