@@ -37,7 +37,6 @@ class Program
     public static void PrintMainMenu(string storeName, Kiosk kiosk, User<ItemBase> user)
     {
         Console.Clear();
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine(storeName);
         kiosk.PrintMenu();
         kiosk.PrintBasket(user);

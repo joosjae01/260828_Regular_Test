@@ -41,21 +41,17 @@
     }
     public void PrintMenu()
     {
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine("[메뉴판]");
         for (int i = 0; i < _itemList.Count; i++)
         {
             Console.Write($"  {i + 1}.");
             _itemList[i].PrintItem();
         }
-        Console.WriteLine("----------------------------------------");
     }
     public void PrintTotal()
     {
         Console.Clear();
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine("[영업 종료]");
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
         Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
 
@@ -77,7 +73,6 @@
                 }
             }
             Console.WriteLine($"  합계 : {_tempTotal}원");
-            Console.WriteLine("----------------------------------------");
         }
     }
 
@@ -103,7 +98,6 @@
             return;
         }
 
-        Console.WriteLine("----------------------------------------");
         PrintBasket(user);
 
         user.SetTotalMoney(ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0));
