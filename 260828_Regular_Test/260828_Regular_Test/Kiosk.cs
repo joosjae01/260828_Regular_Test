@@ -62,7 +62,7 @@
         {
             if(item.ItemCount != 0)
             {
-                Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}");
+                Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}원");
                 _tempTotal += CalculatePrice(item);
             }
         }
