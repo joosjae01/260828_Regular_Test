@@ -1,6 +1,6 @@
 ﻿public class BeefBurger : Item, ISaleable
 {
-    private const float SALE_RATE = 0.7f;
+    private const float SALE_RATE = 0.8f;
     private bool _isSale = false;
 
     public BeefBurger() : base("소고기 버거", 5900, ItemType.Hamburger) {
