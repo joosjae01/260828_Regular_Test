@@ -10,7 +10,7 @@
 
     public void SetTotalMoney(int amount)
     {
-        TotalMoney -= amount;
+        TotalMoney = amount;
     }
 
     public void AddItem(Item item)
