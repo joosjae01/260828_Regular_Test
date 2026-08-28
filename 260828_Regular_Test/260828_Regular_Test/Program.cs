@@ -39,6 +39,8 @@ class Program
             Console.WriteLine("----------------------------------------");
             kiosk.PrintBasket(user);
             Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"사용자 잔액  :  {user.TotalMoney}원");
+            Console.WriteLine("----------------------------------------");
             Console.WriteLine("1. 담기  2. 전체 비우기  3. 결제  4. 영업 종료");
             int picked = ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
 
