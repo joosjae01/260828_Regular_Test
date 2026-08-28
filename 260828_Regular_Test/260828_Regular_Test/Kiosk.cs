@@ -74,7 +74,7 @@
 
     public void PurchaseBasket(User user)
     {
-        if(user.TotalMoney >= _tempTotal && _tempTotal != 0)
+        if(user.TotalMoney >= _tempTotal)
         {
             user.SetTotalMoney(user.TotalMoney - _tempTotal);
             _totalPurchase++;
@@ -84,9 +84,13 @@
             Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
             Console.WriteLine($"잔액  :  {user.TotalMoney}");
         }
+        else if(_tempTotal == 0)
+        {
+            Console.WriteLine("제품을 선택해주세요 !");
+        }
         else
         {
-
+            Console.WriteLine("결제가 정상적으로 이루어지지 않았습니다. 잔액을 확인해주세요.");
         }
     }
 
