@@ -29,7 +29,7 @@ class Program
         {
             Console.Clear();
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("로켓  치킨");
+            Console.WriteLine("로켓  치킨  &  버거");
             Console.WriteLine("----------------------------------------");
             kiosk.PrintMenu();
             Console.WriteLine("----------------------------------------");
