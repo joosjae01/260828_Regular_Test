@@ -97,7 +97,7 @@
             RefreshItem(user);
 
             Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
-            Console.WriteLine($"거스름돈 :  {user.TotalMoney}");
+            Console.WriteLine($"거스름돈 :  {user.TotalMoney}원");
         }
         else if(_tempTotal == 0)
         {
