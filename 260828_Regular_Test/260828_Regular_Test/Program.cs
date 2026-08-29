@@ -55,7 +55,7 @@ class Program
                 Console.Clear();
                 kiosk.PrintMenu();
                 int orderNumber = ConsoleInput.ReadIntInRange("주문 메뉴 : ", 1, kiosk.GetMenuSize()) - 1;
-                int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 0);
+                int orderCount = ConsoleInput.ReadIntAtLeast("주문 개수 : ", 1);
 
                 kiosk.PutToBasket(user, orderNumber, orderCount);
                 break;
