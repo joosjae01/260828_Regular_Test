@@ -26,10 +26,7 @@ public class Kiosk
     {
         if (_itemList[index] is BurgerBase)
         {
-            for(int i  = 0; i < count; i++)
-            {
-                SideMenuBase.IncreaseComboCount();
-            }
+            user.IncreaseComboCount();
         }
         for (int i = 0; i < count; i++)
         {

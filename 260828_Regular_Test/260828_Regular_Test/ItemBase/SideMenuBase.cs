@@ -1,6 +1,6 @@
 ﻿public class SideMenuBase : ItemBase, ISaleable
 {
-    private static int _comboCount = 0;
+    private int _comboCount = 0;
     private const float SALE_RATE = 0.7f;
     public SideMenuBase(string name, int price) : base(name, price, ItemType.SideMenus) {
 
@@ -11,9 +11,9 @@
         _comboCount = 0;
     }
 
-    public static void IncreaseComboCount()
+    public void IncreaseComboCount()
     {
-        SideMenuBase._comboCount++;
+        _comboCount++;
     }
 
     public int GetComboCount()
