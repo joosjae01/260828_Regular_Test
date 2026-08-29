@@ -134,6 +134,7 @@ public class Kiosk
             Console.WriteLine();
             Console.WriteLine($"{_tempTotal}원을 성공적으로 결제하였습니다 !");
             Console.WriteLine($"거스름돈 :  {user.TotalMoney}원");
+            _tempTotal = 0;
         }
         else
         {
