@@ -1,6 +1,6 @@
 # 260828 디벨로켓 제 1회 정규 평가 🚀
 
-https://github.com/joosjae01/260828_Regular_Test/commit/8181e4f2bf92d71bd13f5b545748b80a6ddc2477
+https://github.com/joosjae01/260828_Regular_Test/commit/8181e4f2bf92d71bd13f5b545748b80a6ddc2477  
 => 제출한 버전
 
 <br />
@@ -27,6 +27,7 @@ https://github.com/joosjae01/260828_Regular_Test/commit/8181e4f2bf92d71bd13f5b54
 
 ### (2) 인터페이스 `ISaleable` (미구현)
 - 우선, 세일을 한다는 공통점으로 묶어두고 나중에 개별 기능을 구현하기 위해 설계 해두었는데 기발한 아이디어가 떠오르지 않아 보류 중에 있음
+=> 추가 구현에서 `ISaleable`을 통해 세일 비율을 반환 받는 메서드를 구현하게 하였고, 계산에 적용하도록 하였음
 
 ### (3) 클래스 `User`
 - 구매 계산을 하는데 사용할 총 금액을 가지고 있음
