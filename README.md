@@ -1,5 +1,8 @@
 # 260828 디벨로켓 제 1회 정규 평가 🚀
 
+https://github.com/joosjae01/260828_Regular_Test/commit/736b1560e07ae395a922930feeb3f5fab3412a67
+=> 제출한 버전
+
 <br />
 
 ## 0. 작성자
