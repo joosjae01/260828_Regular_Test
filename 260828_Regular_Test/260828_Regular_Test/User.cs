@@ -18,6 +18,28 @@
         _basket.Add(item);
     }
 
+    public void InitSideMenu()
+    {
+        foreach(T item in _basket)
+        {
+            if(item is SideMenuBase)
+            {
+                (item as SideMenuBase).InitComboCount();
+            }
+        }
+    }
+
+    public void IncreaseComboCount()
+    {
+        foreach(T item in _basket)
+        {
+            if(item is SideMenuBase)
+            {
+                (item as SideMenuBase).IncreaseComboCount();
+            }
+        }
+    }
+
     public int GetBasketSize()
     {
         return _basket.Count;
@@ -25,6 +47,7 @@
 
     public void RefreshItem()
     {
+        InitSideMenu();
         _basket.Clear();
     }
 }

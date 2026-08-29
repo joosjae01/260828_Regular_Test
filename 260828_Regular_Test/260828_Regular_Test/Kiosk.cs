@@ -1,13 +1,20 @@
-﻿public class Kiosk
+﻿using System.Runtime.ExceptionServices;
+
+public class Kiosk
 {
-    private List<Item> _itemList = new List<Item>();
+    private List<ItemBase> _itemList = new List<ItemBase>();
     private int _tempTotal = 0;
     private int _totalPurchase = 0;
     private int _totalMoney = 0;
 
-    public Kiosk(List<Item> items)
+    public Kiosk(List<ItemBase> items)
     {
         _itemList = items;
+    }
+
+    public void AddMenu(ItemBase item)
+    {
+        _itemList.Add(item);
     }
 
     public int GetMenuSize()
@@ -15,80 +22,97 @@
         return _itemList.Count;
     }
 
-    public void PutToBasket(User<Item> user, int index, int count)
+    public void PutToBasket(User<ItemBase> user, int index, int count)
     {
+        if (_itemList[index] is BurgerBase)
+        {
+            user.IncreaseComboCount();
+        }
         for (int i = 0; i < count; i++)
         {
             user.AddItem(_itemList[index]);
-            _itemList[index].ItemCount++;
+            _itemList[index].IncreaseCount();
         }
 
         Console.WriteLine($"{_itemList[index].Name} {count} 개를 장바구니에 정상적으로 담았습니다.");
     }
 
-    public void RefreshItem(User<Item> user)
+    public void RefreshItem(User<ItemBase> user)
     {
         user.RefreshItem();
         for (int i = 0; i < _itemList.Count; i++)
         {
-            _itemList[i].ItemCount = 0;
+            _itemList[i].InitCount();
         }
     }
     public void PrintMenu()
     {
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine("[메뉴판]");
         for (int i = 0; i < _itemList.Count; i++)
         {
             Console.Write($"  {i + 1}.");
             _itemList[i].PrintItem();
         }
-        Console.WriteLine("----------------------------------------");
+        Console.WriteLine();
     }
     public void PrintTotal()
     {
         Console.Clear();
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine("[영업 종료]");
-        Console.WriteLine("----------------------------------------");
         Console.WriteLine($"  총 결제 횟수 : {_totalPurchase}번");
         Console.WriteLine($"  총 결제 금액 : {_totalMoney}원");
 
     }
 
-    public void PrintBasket(User<Item> user)
+    public void PrintBasket(User<ItemBase> user)
     {
         if (user.GetBasketSize() > 0)
         {
             Console.WriteLine("[장바구니]");
 
             _tempTotal = 0;
-            foreach (Item item in _itemList)
+            foreach (ItemBase item in _itemList)
             {
-                if (item.ItemCount != 0)
+                if (item.GetCount() != 0)
                 {
-                    Console.WriteLine($"  {item.Name} x{item.ItemCount} {CalculatePrice(item)}원");
+                    Console.WriteLine($"  {item.Name} x{item.GetCount()} {CalculatePrice(item)}원");
                     _tempTotal += CalculatePrice(item);
                 }
             }
-            Console.WriteLine($"  합계 : {_tempTotal}원");
-            Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"  합계 : {_tempTotal}원\n");
         }
     }
 
-    public int CalculatePrice(Item item)
+    public int CalculatePrice(ItemBase item)
     {
         int price = 0;
-
-        for (int i = 0; i < item.ItemCount; i++)
+        if(item is SideMenuBase)
         {
-            price += item.GetPrice();
+            float saleRate = (item as SideMenuBase).GetSaleRate();
+            int size = (item as SideMenuBase).GetComboCount();
+
+            for(int i = 0; i < size; i++)
+            {
+                price += (int)(item.GetPrice() * saleRate);
+            }
+
+            for(int i = size; i < item.GetCount(); i++)
+            {
+                price += item.GetPrice();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < item.GetCount(); i++)
+            {
+                price += item.GetPrice();
+            }
         }
 
         return price;
     }
 
-    public void PurchaseBasket(User<Item> user)
+    public void PurchaseBasket(User<ItemBase> user)
     {
         Console.Clear();
 
@@ -98,7 +122,6 @@
             return;
         }
 
-        Console.WriteLine("----------------------------------------");
         PrintBasket(user);
 
         user.SetTotalMoney(ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0));
